@@ -11,7 +11,9 @@ class Fork
         Fork() = default;
         Fork(const Fork &) = delete;
         Fork &operator=(const Fork &) = delete;
-        Fork(Fork &&) noexcept : mutex() {}
-        Fork &operator=(Fork &&) noexcept { return *this; }
-
+        Fork(Fork &&) noexcept;
+        Fork &operator=(Fork &&) noexcept;
+        ~Fork();
+        void pickUp();
+        void putDown();
 };

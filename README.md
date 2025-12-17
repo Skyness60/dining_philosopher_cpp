@@ -1,6 +1,8 @@
-# Dining Philosophers (EN)
+# Dining Philosophers (EN — default)
 
-Small C++ implementation of the Dining Philosophers problem to practice multi-threading and the resource-hierarchy pattern (global ordering on forks).
+Small C++ implementation of the Dining Philosophers problem to practice multi-threading and the resource-hierarchy pattern (global ordering on forks). Français plus bas.
+
+Language: English (default) | [Français](#philosophes-d%C3%AEneurs-fr)
 
 ## What’s inside
 - `src/` sources (`Dining` app wrapper, `Philosopher` logic, `main.cc`)
@@ -16,7 +18,7 @@ make        # build bin/philo
 - Example: `./bin/philo 5 100 120 150 3`
 
 ## Threads and the problem
-- A thread is a lightweight execution unit sharing memory with other threads; here each philosopher runs in its own detached thread.
+- A thread is a lightweight execution unit sharing memory with other threads; here each philosopher runs in its own thread started by the main program.
 - Dining Philosophers: philosophers alternate thinking/eating and must pick up two shared forks; naive locking can deadlock if everyone grabs one fork.
 
 ## Pattern used: resource hierarchy
@@ -50,7 +52,7 @@ Each philosopher follows the same rule: always lock the lower-index fork first, 
 - `meals_per_philo`: optional positive integer; when set, each philosopher stops after this many meals.
 
 ## Future ideas
-- Add clean shutdown (signal/flag) instead of detaching threads.
+- Add clean shutdown (signal/flag).
 - Implement starvation mitigation (e.g., limit concurrent eaters).
 - Add logging/metrics and tests around timing and mutual exclusion.
 
@@ -58,7 +60,9 @@ Each philosopher follows the same rule: always lock the lower-index fork first, 
 
 # Philosophes Dîneurs (FR)
 
-Petite implémentation C++ du problème des philosophes dîneurs pour s’entraîner aux threads et au pattern de hiérarchie de ressources (ordre global sur les fourchettes).
+Petite implémentation C++ du problème des philosophes dîneurs pour s’entraîner aux threads et au pattern de hiérarchie de ressources (ordre global sur les fourchettes). Section anglaise au-dessus.
+
+Langue : Français | [English](#dining-philosophers-en--default)
 
 ## Contenu
 - `src/` code source (`Dining`, `Philosopher`, `main.cc`)
@@ -74,7 +78,7 @@ make        # construit bin/philo
 - Exemple : `./bin/philo 5 100 120 150 3`
 
 ## Threads et problème
-- Un thread est une unité d’exécution légère qui partage la mémoire du processus ; ici chaque philosophe s’exécute dans son propre thread détaché.
+- Un thread est une unité d’exécution légère qui partage la mémoire du processus ; ici chaque philosophe s’exécute dans son propre thread lancé et rejoint depuis le programme principal.
 - Philosophes dîneurs : les philosophes alternent pensée/repas et doivent prendre deux fourchettes partagées ; un verrouillage naïf peut mener au deadlock si chacun garde une fourchette.
 
 ## Pattern utilisé : hiérarchie de ressources
@@ -97,8 +101,8 @@ Disposition (5 philosophes / 5 fourchettes) :
 ```
 Ordre de prise (exemple P3 avec F3 et F4) :
 ```
-1) min(F3, F4) = F3 -> lock F3
-2) max(F3, F4) = F4 -> lock F4
+1) min(F3, F4) = F3 -> verrouiller F3
+2) max(F3, F4) = F4 -> verrouiller F4
 ```
 Chaque philosophe suit ce schéma : toujours verrouiller la fourchette à l’index le plus bas, puis la plus haute.
 
@@ -108,6 +112,6 @@ Chaque philosophe suit ce schéma : toujours verrouiller la fourchette à l’in
 - `repas_par_philo` : entier positif optionnel ; quand défini, chaque philosophe s’arrête après ce nombre de repas.
 
 ## Pistes futures
-- Ajouter un arrêt propre (signal/flag) plutôt que des threads détachés.
+- Ajouter un arrêt propre (signal/flag).
 - Réduire la famine éventuelle (par ex. limiter le nombre de mangeurs simultanés).
 - Ajouter du logging/des métriques et des tests sur le timing et l’exclusion mutuelle.
